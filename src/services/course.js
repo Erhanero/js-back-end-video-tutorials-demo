@@ -34,6 +34,7 @@ function updateById(id, course) {
 
 function deleteById(id) {
     return Course.findByIdAndDelete(id);
+
 }
 module.exports = {
     create,

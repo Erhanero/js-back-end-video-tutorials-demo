@@ -7,9 +7,6 @@ const { authMiddleware } = require("./middlewares/auth");
 const app = express();
 expressConfig(app);
 
-app.get("/", (req, res) => {
-    res.send("Hello")
-})
 app.use(authMiddleware);
 
 app.use(router);

@@ -15,11 +15,8 @@ const courseSchema = new mongoose.Schema({
     },
     isPublic: {
         type: Boolean,
-        default: false
-    },
-    createdAt: {
-        type: Date,
-        required: true
+        default: false,
+
     },
     usersEnrolled: [
         {
@@ -28,7 +25,10 @@ const courseSchema = new mongoose.Schema({
 
         }
     ],
+}, {
+    timestamps: true
 });
+
 
 const Course = mongoose.model("Course", courseSchema);
 

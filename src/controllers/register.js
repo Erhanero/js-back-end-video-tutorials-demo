@@ -17,7 +17,8 @@ router.post("/register", isGuest, async (req, res) => {
         } else if (req.body.password != req.body.repeatPassword) {
             throw new Error("Passwords don't match!")
         }
-        const token = await authService.register(req.body);
+        const { username, password } = req.body;
+        const token = await authService.register({ username, password });
 
         res.cookie("app-token", token, { httpOnly: true });
         res.redirect("/");

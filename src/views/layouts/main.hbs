@@ -20,7 +20,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home </a>
                 </li>
-
+                {{#if user}}
                 <!-- Logged users -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">Welcome, {{username}}</a>
@@ -37,7 +37,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
-
+                {{else}}
                 <!-- Guest users -->
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
@@ -46,6 +46,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
+                {{/if}}
 
             </ul>
         </nav>
@@ -53,10 +54,16 @@
 
         <!-- In case of error, you should display section with class "notifications" -->
         <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-        <!--
+        {{#if errors}}
+
         <section class="notifications">
-            <p class="notification-message">Message...</p>
-        </section>-->
+            {{#each errors}}
+            <p class="notification-message">{{msg}}</p>
+
+            {{/each}}
+        </section>
+
+        {{/if}}
 
 
         {{{body}}}

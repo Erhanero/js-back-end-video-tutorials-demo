@@ -9,7 +9,7 @@ router.get("/login", isGuest, (req, res) => {
 
 router.post("/login", isGuest, async (req, res) => {
     try {
-        const token = await authService.login(req.body.email, req.body.password);
+        const token = await authService.login(req.body.username, req.body.password);
         res.cookie("app-token", token, { httpOnly: true });
 
         res.redirect("/");

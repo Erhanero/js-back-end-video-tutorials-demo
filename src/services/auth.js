@@ -17,8 +17,8 @@ async function register({ username, password }) {
 
 }
 
-async function login(email, password) {
-    const user = await User.findOne({ email });
+async function login(username, password) {
+    const user = await User.findOne({ username });
 
     if (!user) {
         throw new Error("Username or password is invalid!")
@@ -39,9 +39,8 @@ function createToken(user) {
 
     const payload = {
         _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
+        username: user.username,
+        enrolledCourses: user.enrolledCourses
     }
 
     const token = jwt.sign(payload, SECRET_TOKEN);
